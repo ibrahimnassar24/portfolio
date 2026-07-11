@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title} description={entry.data.description}>
+  <article class="max-w-3xl mx-auto py-8">
+    <header class="mb-10 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-slate-100 mb-4">{entry.data.title}</h1>
+      <p class="text-cyan-500 font-medium mb-6">
+        {entry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+      <div class="flex justify-center flex-wrap gap-2">
+        {entry.data.tags?.map(tag => (
+          <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Tailwind Typography Plugin styling via prose classes -->
+    <div class="prose prose-invert prose-cyan max-w-none prose-headings:font-bold prose-a:text-cyan-400 hover:prose-a:text-cyan-300">
+      <Content />
+    </div>
+  </article>
+</Layout>

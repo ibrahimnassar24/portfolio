@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skillCategories = [
+  { title: "Front-end", skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Angular"] },
+  { title: "Back-end", skills: ["Node.js", "Nest.js", "Express", ".Net", "ASP.Net Core", "Firebase"] },
+  { title: "Databases", skills: ["MongoDB", "MSSQL", "FireStore", "PostgreSQL"] },
+  { title: "AI Tools", skills: ["Gemini", "ChatGPT", "Claude", "Copilot", "Prompt Engineering"] },
+  { title: "Other Tools & Skills", skills: ["Git & GitHub", "Docker", "Linux", "Networking", "GCP", "English (B2 Level)"] }
+];
+---
+
+<Layout title="Skills" description="Technical skills including Front-end, Back-end, Databases, and AI Tools.">
+  <h1 class="text-4xl font-bold mb-10 border-b border-slate-800 pb-4">Technical Skills</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {skillCategories.map(category => (
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/50 transition-colors">
+        <h2 class="text-xl font-semibold text-cyan-400 mb-4">{category.title}</h2>
+        <div class="flex flex-wrap gap-2">
+          {category.skills.map(skill => (
+            <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</Layout>

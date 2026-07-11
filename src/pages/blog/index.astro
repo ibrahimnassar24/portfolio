@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all blog posts and sort them by date (newest first)
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog" description="Articles on full-stack web development, backend engineering, and continuous learning.">
+  <h1 class="text-4xl font-bold mb-10 border-b border-slate-800 pb-4">Blog & Technical Writing</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {sortedPosts.map(post => (
+      <a href={`/blog/${post.slug}`} class="group block p-6 bg-slate-900 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition-colors">
+        <h2 class="text-2xl font-bold text-slate-200 group-hover:text-cyan-400 transition-colors mb-2">{post.data.title}</h2>
+        <p class="text-sm text-cyan-600 mb-4">
+          {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+        <p class="text-slate-400 line-clamp-3 mb-4">{post.data.description}</p>
+        <div class="flex flex-wrap gap-2">
+          {post.data.tags?.map(tag => (
+            <span class="px-2 py-1 bg-slate-950 text-slate-300 text-xs rounded border border-slate-800">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </a>
+    ))}
+  </div>
+</Layout>
