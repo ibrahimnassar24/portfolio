@@ -1,1 +1,233 @@
 @import "tailwindcss";
+
+/* ===========================================
+   GLOBAL.CSS
+   Professional Portfolio Base Styles
+   =========================================== */
+
+@import "./theme.css";
+
+/* ===========================================
+   RESET
+   =========================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+  background: var(--color-bg);
+  background-image: var(--gradient-hero);
+  background-attachment: fixed;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================================
+   TYPOGRAPHY
+   =========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+strong {
+  color: var(--color-text);
+}
+
+/* ===========================================
+   LINKS
+   =========================================== */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* ===========================================
+   MEDIA
+   =========================================== */
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  user-select: none;
+}
+
+/* ===========================================
+   FORM ELEMENTS
+   =========================================== */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  color: var(--color-text);
+}
+
+/* ===========================================
+   LISTS
+   =========================================== */
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ===========================================
+   SELECTION
+   =========================================== */
+
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* ===========================================
+   SCROLLBAR
+   =========================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-hover);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Firefox */
+
+html {
+  scrollbar-color: var(--color-surface-hover) var(--color-bg);
+  scrollbar-width: thin;
+}
+
+/* ===========================================
+   LAYOUT
+   =========================================== */
+
+main {
+  width: 100%;
+}
+
+section {
+  position: relative;
+  padding: var(--space-32) 0;
+}
+
+.container {
+  width: min(var(--container-width), calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+/* ===========================================
+   ACCESSIBILITY
+   =========================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+
+@media (max-width: 768px) {
+  section {
+    padding: var(--space-24) 0;
+  }
+
+  .container {
+    width: min(100% - 1.5rem, var(--container-width));
+  }
+}
