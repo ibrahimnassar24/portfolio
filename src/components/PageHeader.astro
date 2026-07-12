@@ -1,0 +1,31 @@
+---
+export interface Props {
+  title: string;
+  subtitleAccent?: string;
+  subtitle: string;
+  description: string;
+  lineColor?: string;
+  centered?: boolean;
+}
+
+const { 
+  title, 
+  subtitleAccent = "", 
+  subtitle = "", 
+  description, 
+  lineColor = "bg-cyan-500",
+  centered = false 
+} = Astro.props;
+---
+
+<header class={`mb-16 pt-8 animate-fade-in ${centered ? 'text-center flex flex-col items-center' : ''}`}>
+  <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+    {title} 
+    {subtitleAccent && <span class="text-slate-500 font-light">{subtitleAccent}</span>}
+    {subtitle}
+  </h1>
+  <p class={`text-lg text-slate-400 max-w-2xl ${centered ? 'text-center leading-relaxed' : ''}`}>
+    {description}
+  </p>
+  <div class={`h-1 w-20 ${lineColor} rounded mt-6`}></div>
+</header>

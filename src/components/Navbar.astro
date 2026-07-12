@@ -1,0 +1,70 @@
+---
+const pathname = Astro.url.pathname;
+// Remove leading and trailing slashes to get a clean path segment
+const currentPath = pathname.replace(/^\/|\/$/g, '');
+---
+
+<nav class="sticky top-0 z-50 bg-slate-950/70 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="text-3xl text-white group flex items-center tracking-wide" style="font-family: 'Grand Hotel', cursive;">
+      Ibrahim Nassar
+    </a>
+    
+    <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+      <a href="/" class={`relative py-2 transition-colors ${currentPath === '' ? 'text-cyan-400' : 'text-slate-300 hover:text-white'}`}>
+        Home
+        {currentPath === '' && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 rounded-t-full"></span>}
+      </a>
+      <a href="/skills" class={`relative py-2 transition-colors ${currentPath === 'skills' ? 'text-cyan-400' : 'text-slate-300 hover:text-white'}`}>
+        Skills
+        {currentPath === 'skills' && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 rounded-t-full"></span>}
+      </a>
+      <a href="/certifications" class={`relative py-2 transition-colors ${currentPath === 'certifications' ? 'text-cyan-400' : 'text-slate-300 hover:text-white'}`}>
+        Certifications
+        {currentPath === 'certifications' && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 rounded-t-full"></span>}
+      </a>
+      <a href="/experience" class={`relative py-2 transition-colors ${currentPath === 'experience' ? 'text-cyan-400' : 'text-slate-300 hover:text-white'}`}>
+        Experience
+        {currentPath === 'experience' && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 rounded-t-full"></span>}
+      </a>
+      <a href="/projects" class={`relative py-2 transition-colors ${currentPath === 'projects' ? 'text-cyan-400' : 'text-slate-300 hover:text-white'}`}>
+        Projects
+        {currentPath === 'projects' && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 rounded-t-full"></span>}
+      </a>
+      <a href="/contact" class={`relative py-2 transition-colors ${currentPath === 'contact' ? 'text-cyan-400' : 'text-slate-300 hover:text-white'}`}>
+        Contact
+        {currentPath === 'contact' && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 rounded-t-full"></span>}
+      </a>
+    </div>
+    
+    {/* Mobile Menu Button */}
+    <button class="md:hidden text-slate-300 hover:text-white p-2 rounded-md hover:bg-white/5 transition-colors" aria-label="Toggle menu" id="mobile-menu-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </div>
+  
+  {/* Mobile Menu Content */}
+  <div class="md:hidden hidden bg-slate-900 border-b border-white/10 absolute w-full shadow-2xl" id="mobile-menu">
+    <div class="px-4 py-6 flex flex-col space-y-4 text-sm font-medium">
+      <a href="/" class={`px-4 py-3 rounded-lg ${currentPath === '' ? 'bg-cyan-500/10 text-cyan-400' : 'text-slate-300 hover:bg-white/5'}`}>Home</a>
+      <a href="/skills" class={`px-4 py-3 rounded-lg ${currentPath === 'skills' ? 'bg-cyan-500/10 text-cyan-400' : 'text-slate-300 hover:bg-white/5'}`}>Skills</a>
+      <a href="/certifications" class={`px-4 py-3 rounded-lg ${currentPath === 'certifications' ? 'bg-cyan-500/10 text-cyan-400' : 'text-slate-300 hover:bg-white/5'}`}>Certifications</a>
+      <a href="/experience" class={`px-4 py-3 rounded-lg ${currentPath === 'experience' ? 'bg-cyan-500/10 text-cyan-400' : 'text-slate-300 hover:bg-white/5'}`}>Experience</a>
+      <a href="/projects" class={`px-4 py-3 rounded-lg ${currentPath === 'projects' ? 'bg-cyan-500/10 text-cyan-400' : 'text-slate-300 hover:bg-white/5'}`}>Projects</a>
+      <a href="/contact" class={`px-4 py-3 rounded-lg ${currentPath === 'contact' ? 'bg-cyan-500/10 text-cyan-400' : 'text-slate-300 hover:bg-white/5'}`}>Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

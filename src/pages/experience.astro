@@ -1,55 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
 
-<Layout title="Experience & Projects" description="Professional experience and full-stack development projects.">
-  <h1 class="text-4xl font-bold mb-10 border-b border-slate-800 pb-4">Experience & Projects</h1>
+<Layout title="Experience" description="Professional experience of Ibrahim Nassar.">
   
-  <div class="space-y-12">
+  <PageHeader 
+    title="Work Experience"
+    description="A timeline of my professional journey, focusing on developing scalable backend architectures and robust full-stack solutions."
+    lineColor="bg-cyan-500"
+  />
+
+  <div class="space-y-24">
+    
     <!-- Professional Roles -->
-    <section>
-      <h2 class="text-2xl font-semibold text-cyan-400 mb-6">Work Experience</h2>
-      <div class="space-y-6">
-        <div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="text-xl font-bold">Backend .Net Developer</h3>
-            <span class="text-sm text-slate-400">Oct 2025 - Present</span>
+    <section class="animate-fade-up" style="animation-delay: 100ms;">
+      <div class="relative border-l border-slate-800 ml-3 space-y-12">
+        
+        <!-- OPNsify -->
+        <div class="relative pl-8">
+          <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-cyan-500 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.8)] ring-4 ring-slate-950"></div>
+          <div class="glass-card p-6 md:p-8 rounded-2xl group">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+              <div>
+                <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Backend .NET Developer</h3>
+                <p class="text-cyan-500 font-medium">@OPNsify</p>
+              </div>
+              <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-sm text-slate-300 whitespace-nowrap">
+                Oct 2023 - Present
+              </span>
+            </div>
+            
+            <div class="space-y-4 mt-6">
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-white/5">
+                <h4 class="text-white font-semibold mb-2">PowerOps</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Developed a cross-platform .NET network monitoring and automation system featuring a custom TCP protocol, Clean Architecture, and multi-hypervisor (ESXi) integration to automate enterprise infrastructure management.
+                </p>
+              </div>
+              
+              <div class="bg-slate-900/50 rounded-lg p-4 border border-white/5">
+                <h4 class="text-white font-semibold mb-2">ERP System</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  Built a scalable ERP system using .NET (C#), Entity Framework, and Angular following Domain-Driven Design and Clean Architecture. Implemented RESTful APIs, role-based access control, and applied Repository/Unit of Work patterns.
+                </p>
+              </div>
+            </div>
           </div>
-          <p class="text-cyan-500 mb-4">@OPNsify</p>
-          <ul class="list-disc list-inside text-slate-300 space-y-2">
-            <li>Developing <strong>PowerOps</strong>: A cross-platform .NET 8.0 network monitoring and automation system featuring Clean Architecture.</li>
-            <li>Building scalable <strong>ERP systems</strong> using .NET (C#), Entity Framework, and Angular with Domain-Driven Design.</li>
-          </ul>
         </div>
         
-        <div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="text-xl font-bold">IT & Web Developer / Supervisor</h3>
-            <span class="text-sm text-slate-400">April 2023 - Present</span>
-          </div>
-          <p class="text-cyan-500 mb-4">Private School</p>
-          <p class="text-slate-300">Managing IT infrastructure, educational technology, and web development initiatives.</p>
-        </div>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section>
-      <h2 class="text-2xl font-semibold text-cyan-400 mb-6">Selected Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-          <h3 class="text-lg font-bold mb-2">Connect4 Multiplayer Game</h3>
-          <p class="text-slate-300 text-sm">Developed a real-time multiplayer game with an ASP.NET Core Web API backend and Angular frontend, utilizing SignalR and Identity Framework.</p>
-        </div>
-        <div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-          <h3 class="text-lg font-bold mb-2">Messaging App (Nest.js)</h3>
-          <p class="text-slate-300 text-sm">Engineered a real-time event pipeline using WebSockets, Redis Pub/Sub, and RabbitMQ. Optimized persistence with PostgreSQL and MongoDB.</p>
-        </div>
-        <div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-          <h3 class="text-lg font-bold mb-2">OCR App</h3>
-          <p class="text-slate-300 text-sm">Application to convert scanned PDFs into Word documents and generate audio records using Google Vision AI and Google TTS.</p>
-        </div>
-      </div>
-    </section>
   </div>
 </Layout>

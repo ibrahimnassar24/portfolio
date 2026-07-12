@@ -1,0 +1,24 @@
+---
+export interface Props {
+  text: string;
+  theme?: 'cyan' | 'indigo' | 'purple' | 'blue' | 'emerald' | 'red' | 'slate';
+}
+
+const { text, theme = 'slate' } = Astro.props;
+
+const colorMap = {
+  cyan: 'text-cyan-300 bg-cyan-900/30 border-cyan-800/50',
+  indigo: 'text-indigo-300 bg-indigo-900/30 border-indigo-800/50',
+  purple: 'text-purple-300 bg-purple-900/30 border-purple-800/50',
+  blue: 'text-blue-300 bg-blue-900/30 border-blue-800/50',
+  emerald: 'text-emerald-300 bg-emerald-900/30 border-emerald-800/50',
+  red: 'text-red-300 bg-red-900/30 border-red-800/50',
+  slate: 'text-slate-300 bg-slate-800 border-slate-700'
+};
+
+const themeClasses = colorMap[theme] || colorMap.slate;
+---
+
+<span class={`px-2.5 py-1 text-xs font-medium rounded-md border ${themeClasses}`}>
+  {text}
+</span>

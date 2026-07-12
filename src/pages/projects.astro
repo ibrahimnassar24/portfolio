@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: "Messaging App",
+    description: "Engineered a real-time event pipeline utilizing WebSockets for client connectivity, Redis Pub/Sub for message fan-out, and RabbitMQ for reliable offline push notifications. Optimized data persistence using PostgreSQL and MongoDB.",
+    hoverColor: "group-hover:text-cyan-400",
+    technologies: [
+      { text: "Nest.js", theme: "cyan" },
+      { text: "WebSockets", theme: "slate" },
+      { text: "Redis / RabbitMQ", theme: "slate" }
+    ]
+  },
+  {
+    title: "Connect4 Multiplayer",
+    description: "Developed a real-time multiplayer game. Implemented SignalR for live game updates, Identity Framework for secure authentication, and NgRx for state management. Integrated Angular Material for UI.",
+    hoverColor: "group-hover:text-indigo-400",
+    technologies: [
+      { text: "ASP.NET Core", theme: "indigo" },
+      { text: "Angular", theme: "red" },
+      { text: "SignalR", theme: "slate" }
+    ]
+  },
+  {
+    title: "OCR App",
+    description: "An application to convert scanned PDF files into Word documents and generate audio records. Integrated advanced AI tools such as Google Vision AI for text extraction and Google TTS for audio.",
+    hoverColor: "group-hover:text-purple-400",
+    technologies: [
+      { text: "Google Vision AI", theme: "purple" },
+      { text: "Google TTS", theme: "slate" }
+    ]
+  },
+  {
+    title: "Instagram Clone",
+    description: "A responsive front-end clone of Instagram's user interface, replicating the design and core features of the platform, focusing on mimicking modern UI and interactive elements.",
+    hoverColor: "group-hover:text-blue-400",
+    technologies: [
+      { text: "React", theme: "blue" },
+      { text: "UI/UX", theme: "slate" }
+    ]
+  },
+  {
+    title: "Library Management System",
+    description: "A comprehensive web-based application designed to manage book inventories, user accounts, and borrowing transactions. Features full CRUD operations and role-based access control with an intuitive interface.",
+    hoverColor: "group-hover:text-emerald-400",
+    colSpan: true,
+    technologies: [
+      { text: ".NET Framework", theme: "emerald" },
+      { text: "SQL Server", theme: "slate" },
+      { text: "RBAC", theme: "slate" }
+    ]
+  }
+];
+---
+
+<Layout title="Projects" description="Full-stack development projects by Ibrahim Nassar.">
+  
+  <PageHeader 
+    title="Featured Projects"
+    description="A showcase of my technical projects, focusing on scalable architecture, real-time communication, and clean code."
+    lineColor="bg-indigo-500"
+  />
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 animate-fade-up" style="animation-delay: 100ms;">
+    {projects.map(project => (
+      <ProjectCard 
+        title={project.title}
+        description={project.description}
+        hoverColor={project.hoverColor}
+        colSpan={project.colSpan}
+        technologies={project.technologies}
+      />
+    ))}
+  </div>
+
+</Layout>

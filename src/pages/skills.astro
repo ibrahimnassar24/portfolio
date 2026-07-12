@@ -1,24 +1,72 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
 
 const skillCategories = [
-  { title: "Front-end", skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Angular"] },
-  { title: "Back-end", skills: ["Node.js", "Nest.js", "Express", ".Net", "ASP.Net Core", "Firebase"] },
-  { title: "Databases", skills: ["MongoDB", "MSSQL", "FireStore", "PostgreSQL"] },
-  { title: "AI Tools", skills: ["Gemini", "ChatGPT", "Claude", "Copilot", "Prompt Engineering"] },
-  { title: "Other Tools & Skills", skills: ["Git & GitHub", "Docker", "Linux", "Networking", "GCP", "English (B2 Level)"] }
+  { 
+    title: "Front-end", 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>`,
+    color: "text-blue-400",
+    skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Angular"] 
+  },
+  { 
+    title: "Back-end", 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" /></svg>`,
+    color: "text-emerald-400",
+    skills: ["Node.js", "Nest.js", "Express", ".NET", "ASP.NET Core", "Firebase"] 
+  },
+  { 
+    title: "Databases", 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>`,
+    color: "text-purple-400",
+    skills: ["MongoDB", "MSSQL", "FireStore", "PostgreSQL"] 
+  },
+  { 
+    title: "AI Tools", 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" /></svg>`,
+    color: "text-amber-400",
+    skills: ["Gemini", "ChatGPT", "Claude", "Copilot", "Prompt Engineering"] 
+  },
+  { 
+    title: "DevOps & Tools", 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.492-3.396c.331-.452.156-1.154-.386-1.32l-4.646-1.417M11.42 15.17l-3.396 2.492c-.452.331-1.154.156-1.32-.386l-1.417-4.646m6.133 2.532-3.953-3.953m0 0-3.46 3.46a2.121 2.121 0 0 1-2.999 0 2.122 2.122 0 0 1 0-2.999l3.46-3.46m0 0L7.5 5.25m-2.25 2.25L3.75 6m2.25-2.25L4.5 2.25M6 3.75l-1.5 1.5" /></svg>`,
+    color: "text-orange-400",
+    skills: ["Git & GitHub", "Docker", "Linux", "Networking", "Google Cloud Platform"] 
+  },
+  { 
+    title: "Soft Skills & Other", 
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg>`,
+    color: "text-pink-400",
+    skills: ["Problem Solving", "Leadership", "Teamwork", "Fast Learner", "English (B2 Level)"] 
+  }
 ];
 ---
 
 <Layout title="Skills" description="Technical skills including Front-end, Back-end, Databases, and AI Tools.">
-  <h1 class="text-4xl font-bold mb-10 border-b border-slate-800 pb-4">Technical Skills</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {skillCategories.map(category => (
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/50 transition-colors">
-        <h2 class="text-xl font-semibold text-cyan-400 mb-4">{category.title}</h2>
-        <div class="flex flex-wrap gap-2">
+  
+  <PageHeader 
+    title="Technical"
+    subtitleAccent="Skills"
+    description="A comprehensive overview of my technical toolkit, ranging from front-end frameworks to database management and AI integrations."
+    lineColor="bg-cyan-500"
+  />
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 animate-fade-up" style="animation-delay: 100ms;">
+    {skillCategories.map((category, idx) => (
+      <div class="glass-card flex flex-col p-6 rounded-2xl group relative overflow-hidden" style={`animation-delay: ${100 + (idx * 50)}ms;`}>
+        <!-- Subtle background glow based on category color -->
+        <div class="absolute -right-10 -top-10 w-32 h-32 opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity bg-current" style={`color: var(--tw-text-opacity) !important;`}></div>
+        
+        <div class="flex items-center gap-3 mb-6 relative z-10">
+          <div class={`p-2 rounded-lg bg-slate-800/80 border border-slate-700/50 ${category.color} shadow-inner`}>
+            <Fragment set:html={category.icon} />
+          </div>
+          <h2 class="text-xl font-bold text-white tracking-wide">{category.title}</h2>
+        </div>
+        
+        <div class="flex flex-wrap gap-2.5 relative z-10">
           {category.skills.map(skill => (
-            <span class="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full border border-slate-700">
+            <span class="px-3 py-1.5 bg-slate-900/80 text-slate-300 text-sm font-medium rounded-md border border-slate-700/50 hover:border-slate-500 hover:text-white transition-colors cursor-default">
               {skill}
             </span>
           ))}
@@ -26,4 +74,5 @@ const skillCategories = [
       </div>
     ))}
   </div>
+
 </Layout>
